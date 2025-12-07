@@ -38,6 +38,7 @@ class CustomAlert extends StatelessWidget {
                       color: Colors.yellow,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.none,
                     ),
                   ),
                 ],
@@ -45,23 +46,16 @@ class CustomAlert extends StatelessWidget {
               const SizedBox(height: 12),
               Text(
                 details,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  decoration: TextDecoration.none,
+                ),
               ),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end, // Right-align buttons
                 children: [
-                  TextButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    style: TextButton.styleFrom(
-                      backgroundColor: const Color(0xFF1C1F22),
-                    ),
-                    child: const Text(
-                      'Cancel',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();

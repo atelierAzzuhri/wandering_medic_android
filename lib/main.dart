@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:medics_patient/view/account_view.dart';
-import 'package:medics_patient/view/auth_view.dart';
-import 'package:medics_patient/view/chat_view.dart';
-import 'package:medics_patient/view/home_view.dart';
-import 'package:medics_patient/view/map_view.dart';
+import 'package:medics_patient/canvas_view.dart';
+import 'package:medics_patient/features/auth/auth_screen.dart';
+import 'package:medics_patient/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -16,10 +14,10 @@ class MyApp extends StatelessWidget {
 
   Future<String> isLoggedIn() async {
     final prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString('credential');
+    final authData = prefs.getString('auth_data');
 
-    final route = (token != null && token.isNotEmpty) ? '/' : '/auth';
-    print('isLoggedIn: token=${token ?? "null"}, redirecting to $route');
+    final route = (authData != null && authData.isNotEmpty) ? '/canvas' : '/auth';
+    logger.i('isLoggedIn: token=${authData ?? "null"}, redirecting to $route');
 
     return route;
   }
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
 
-        final initialRoute = snapshot.data ?? '/auth';
+        final initialRoute = snapshot.data;
 
         return MaterialApp(
           title: 'Medics_patient',
@@ -49,16 +47,12 @@ class MyApp extends StatelessWidget {
               bodyLarge: TextStyle(fontSize: 18, color:  Color(0xFFF8F9FA)),
               bodyMedium: TextStyle(fontSize: 14, color:  Color(0xFFF8F9FA)),
               bodySmall: TextStyle(fontSize: 12, color:  Color(0xFFF8F9FA)),
-
             ),
           ),
           initialRoute: initialRoute,
           routes: {
-            '/': (context) => HomeView(),
-            '/auth': (context) => AuthView(),
-            '/chat': (context) => ChatView(),
-            '/account': (context) => AccountView(),
-            '/map': (context) => MapView(),
+            '/auth': (context) => AuthScreen(),
+            '/canvas': (context) => CanvasView(),
           },
         );
       },

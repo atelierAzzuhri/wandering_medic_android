@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:medics_patient/logger.dart';
-import 'package:medics_patient/models/payment_model.dart';
 import 'package:medics_patient/store/credential_store.dart';
-import 'package:medics_patient/store/default_payment_store.dart';
 import 'package:medics_patient/store/location_store.dart';
-import 'package:medics_patient/store/payment_store.dart';
 import 'package:medics_patient/view/account_widgets/account_location_widget.dart';
 import 'package:medics_patient/view/account_widgets/account_payments_widget.dart';
 import 'package:medics_patient/widgets/costom_navigation_bar.dart';
 import 'package:medics_patient/widgets/custom_app_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../widgets/notifications/custom_danger.dart';
-import 'account_widgets/payment_widgets/add_payment_widget.dart';
 import 'account_widgets/account_credential_widget.dart';
 import 'account_widgets/credential_widgets/edit_password_widget.dart';
 

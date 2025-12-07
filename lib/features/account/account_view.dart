@@ -5,7 +5,6 @@ import 'package:medics_patient/features/account/providers/account_provider.dart'
 import 'package:medics_patient/view/account_widgets/credential_widgets/edit_password_widget.dart';
 import 'package:medics_patient/widgets/notifications/custom_danger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../view/account_widgets/account_credential_widget.dart';
 
 class AccountView extends ConsumerStatefulWidget {
   const AccountView({super.key});
